@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import GlobalStyles from "components/GlobalStyles";
+import AppRouter from "components/Router";
 
 function App() {
+  const [init, setInit] = useState(true);
+
   return (
     <>
-      <div>Kiscord !</div>
+      {init ? <AppRouter /> : <div>Initializing...</div>}
       <GlobalStyles />
     </>
   );
