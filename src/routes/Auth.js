@@ -76,6 +76,7 @@ const WaveBackground = styled.div`
 `;
 
 const Panel = styled.div`
+  z-index: 10;
   width: 480px;
   height: 420px;
   background-color: #36393e;
