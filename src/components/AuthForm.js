@@ -59,6 +59,10 @@ const FindingPwButton = styled.div`
   margin-top: 7px;
   margin-bottom: 25px;
   cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const LoginButton = styled.div`
@@ -72,6 +76,10 @@ const LoginButton = styled.div`
   color: ${(props) => props.theme.mainFontColor};
   font-size: 15px;
   cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => props.theme.hl2Color};
+  }
 `;
 
 const RegisterHolder = styled.div`
@@ -89,4 +97,8 @@ const RegisterButton = styled.div`
   font-size: 13px;
   color: ${(props) => props.theme.hlColor};
   cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
