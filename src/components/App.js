@@ -1,14 +1,18 @@
 import React, { useState } from "react";
-import GlobalStyles from "components/GlobalStyles";
+import GlobalStyles from "Styles/GlobalStyles";
 import AppRouter from "components/Router";
+import { ThemeProvider } from "styled-components";
+import theme from "Styles/theme";
 
 function App() {
   const [init, setInit] = useState(true);
 
   return (
     <>
-      {init ? <AppRouter /> : <div>Initializing...</div>}
-      <GlobalStyles />
+      <ThemeProvider theme={theme}>
+        {init ? <AppRouter /> : <div>Initializing...</div>}
+        <GlobalStyles />
+      </ThemeProvider>
     </>
   );
 }
