@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const AuthForm = ({ setRegistration }) => {
+const RegistrationForm = ({ setRegistration }) => {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, SetPassword] = useState("");
 
   return (
-    // ** Check whether required property work or not **
     <Holder>
       <InputHolder>
         <Input
@@ -19,25 +19,29 @@ const AuthForm = ({ setRegistration }) => {
       </InputHolder>
       <InputHolder>
         <Input
+          type="text"
+          required
+          value={username}
+          onChange={(event) => setUsername(event.value)}
+        />
+        <InputTitle>username</InputTitle>
+      </InputHolder>
+      <InputHolder>
+        <Input
           type="password"
+          required
           value={password}
           onChange={(event) => SetPassword(event.value)}
         />
         <InputTitle>Password</InputTitle>
       </InputHolder>
-      <FindingPwButton>Did you forget yout password? </FindingPwButton>
-      <LoginButton>Login</LoginButton>
-      <RegisterHolder>
-        <RegisterText>Do you need an account?</RegisterText>
-        <RegisterButton onClick={() => setRegistration((prev) => !prev)}>
-          Register
-        </RegisterButton>
-      </RegisterHolder>
+      <ContinueButton>Continue</ContinueButton>
+      <ResetButton onClick={() => setRegistration((prev) => !prev)}>
+        Do you have an account already?
+      </ResetButton>
     </Holder>
   );
 };
-
-export default AuthForm;
 
 const Holder = styled.div``;
 
@@ -58,33 +62,16 @@ const InputTitle = styled.text`
   left: 0px;
 `;
 
-const FindingPwButton = styled.div`
+const ContinueButton = styled.div`
+  ${(props) => props.theme.hlButton}
+
+  margin-top: 25px;
+`;
+
+const ResetButton = styled.div`
   ${(props) => props.theme.hlText}
 
-  margin-top: 7px;
-`;
-
-const LoginButton = styled.div`
-  ${(props) => props.theme.hlButton}
-`;
-
-const RegisterHolder = styled.div`
   margin-top: 10px;
-  display: flex;
 `;
 
-const RegisterText = styled.text`
-  font-size: 13px;
-  color: ${(props) => props.theme.subFontColor};
-  margin-right: 5px;
-`;
-
-const RegisterButton = styled.div`
-  font-size: 13px;
-  color: ${(props) => props.theme.hlColor};
-  cursor: pointer;
-
-  &:hover {
-    text-decoration: underline;
-  }
-`;
+export default RegistrationForm;

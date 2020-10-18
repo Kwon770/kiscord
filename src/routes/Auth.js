@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import AuthForm from "components/AuthForm";
 import { FaDiscord } from "react-icons/fa";
 import wallpaper from "asset/AuthWallpaper.jpg";
 import Wave from "react-wavify";
+import RegistrationForm from "components/RegistrationForm";
 
 const Auth = () => {
+  const [registration, setRegistration] = useState(false);
+
   return (
     <Holder>
       <WaveHolder>
@@ -17,9 +20,18 @@ const Auth = () => {
         <LogoTitle>KISCORD</LogoTitle>
       </LogoHolder>
       <Panel>
-        <BigGreeting>Welcome back!</BigGreeting>
-        <SmallGreeting>It's so nice to see you again!</SmallGreeting>
-        <AuthForm />
+        {registration ? (
+          <>
+            <BigGreeting>Creating an account</BigGreeting>
+            <RegistrationForm setRegistration={setRegistration} />
+          </>
+        ) : (
+          <>
+            <BigGreeting>Welcome back!</BigGreeting>
+            <SmallGreeting>It's so nice to see you again!</SmallGreeting>
+            <AuthForm setRegistration={setRegistration} />
+          </>
+        )}
       </Panel>
     </Holder>
   );
@@ -77,8 +89,7 @@ const WaveBackground = styled.div`
 
 const Panel = styled.div`
   z-index: 10;
-  width: 480px;
-  height: 420px;
+  padding: 38px 33px;
   background-color: #36393e;
   border-radius: 7px;
   display: flex;
@@ -89,7 +100,6 @@ const Panel = styled.div`
 const BigGreeting = styled.text`
   color: ${(props) => props.theme.mainFontColor};
   font-size: 25px;
-  margin-top: 35px;
 `;
 
 const SmallGreeting = styled.text`
