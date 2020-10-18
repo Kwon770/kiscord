@@ -13,7 +13,7 @@ const AuthForm = ({ setRegistration }) => {
           type="text"
           required
           value={email}
-          onChange={(event) => setEmail(event.value)}
+          onChange={(event) => setEmail(event.target.value)}
         />
         <InputTitle>Email</InputTitle>
       </InputHolder>
@@ -21,7 +21,7 @@ const AuthForm = ({ setRegistration }) => {
         <Input
           type="password"
           value={password}
-          onChange={(event) => SetPassword(event.value)}
+          onChange={(event) => SetPassword(event.target.value)}
         />
         <InputTitle>Password</InputTitle>
       </InputHolder>
@@ -29,7 +29,7 @@ const AuthForm = ({ setRegistration }) => {
       <LoginButton>Login</LoginButton>
       <RegisterHolder>
         <RegisterText>Do you need an account?</RegisterText>
-        <RegisterButton onClick={() => setRegistration((prev) => !prev)}>
+        <RegisterButton onClick={() => setRegistration(true)}>
           Register
         </RegisterButton>
       </RegisterHolder>

@@ -6,6 +6,7 @@ const palette = {
   hl2Color: "#6B7CBF",
   mainFontColor: "#FFFFFF",
   subFontColor: "#86888C",
+  errorColor: "#FF4042",
 };
 
 const ui = {
