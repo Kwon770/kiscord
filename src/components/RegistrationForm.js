@@ -118,7 +118,7 @@ const Input = styled.input`
     props.isWrong ? props.theme.errorColor : "#000000"};
 `;
 
-const InputTitle = styled.text`
+const InputTitle = styled.div`
   color: ${(props) =>
     props.isWrong ? props.theme.errorColor : props.theme.subFontColor};
   font-size: 12px;

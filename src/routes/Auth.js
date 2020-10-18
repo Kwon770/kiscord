@@ -58,7 +58,7 @@ const LogoHolder = styled.div`
   align-items: center;
 `;
 
-const LogoTitle = styled.text`
+const LogoTitle = styled.div`
   color: ${(props) => props.theme.mainFontColor};
   font-size: 22px;
   font-weight: 700;
@@ -97,12 +97,12 @@ const Panel = styled.div`
   align-items: center;
 `;
 
-const BigGreeting = styled.text`
+const BigGreeting = styled.div`
   color: ${(props) => props.theme.mainFontColor};
   font-size: 25px;
 `;
 
-const SmallGreeting = styled.text`
+const SmallGreeting = styled.div`
   color: ${(props) => props.theme.subFontColor};
   font-size: 17px;
   margin-top: 10px;

@@ -35,7 +35,7 @@ const ui = {
     text-decoration: underline;
   }`,
 
-  hlButton: `width: 415px;
+  hlButton: `width: 435px;
   height: 45px;
   border-radius: 5px;
   background-color: ${palette.hlColor};
