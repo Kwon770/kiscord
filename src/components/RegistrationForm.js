@@ -7,27 +7,35 @@ const RegistrationForm = ({ setRegistration }) => {
   const [username, setUsername] = useState("");
   const [password, SetPassword] = useState("");
 
-  const [isEmptyEmail, setIsEmptyEmail] = useState(false);
-  const [isEmptyUsername, setIsEmptyUsername] = useState(false);
-  const [isEmptyPassword, SetIsEmptyPassword] = useState(false);
+  const [isWrongEmail, setIsWrongEmail] = useState(false);
+  const [isWrongUsername, setIsWrongUsername] = useState(false);
+  const [isWrongPassword, SetIsWrongPassword] = useState(false);
 
   const [error, setError] = useState("");
 
+  const validateEmail = () => {
+    var reg_email = /^([0-9a-zA-Z_\.-]+)@([0-9a-zA-Z_-]+)(\.[0-9a-zA-Z_-]+){1,2}$/;
+
+    if (email.trim() === "") {
+      return false;
+    } else if (!reg_email.test(email)) {
+      return false;
+    }
+
+    return true;
+  };
+
   const validateInput = () => {
-    if (
-      email.trim() !== "" &&
-      username.trim() !== "" &&
-      password.trim() !== ""
-    ) {
-      setIsEmptyEmail(false);
-      setIsEmptyUsername(false);
-      SetIsEmptyPassword(false);
+    if (validateEmail() && username.trim() !== "" && password.trim() !== "") {
+      setIsWrongEmail(false);
+      setIsWrongUsername(false);
+      SetIsWrongPassword(false);
 
       return true;
     } else {
-      if (email.trim() === "") setIsEmptyEmail(true);
-      if (username.trim() === "") setIsEmptyUsername(true);
-      if (password.trim() === "") SetIsEmptyPassword(true);
+      if (!validateEmail()) setIsWrongEmail(true);
+      if (username.trim() === "") setIsWrongUsername(true);
+      if (password.trim() === "") SetIsWrongPassword(true);
 
       return false;
     }
@@ -36,7 +44,7 @@ const RegistrationForm = ({ setRegistration }) => {
   const register = async () => {
     setError("");
     if (!validateInput()) {
-      setError("Fill your information.");
+      setError("The information entered is invalid.");
       return;
     }
 
@@ -45,11 +53,10 @@ const RegistrationForm = ({ setRegistration }) => {
         email,
         password
       );
-      await authService.console.log(data);
+      console.log(data);
 
       setRegistration(false);
     } catch (err) {
-      console.log(err.message);
       setError(err.message);
     }
   };
@@ -64,9 +71,9 @@ const RegistrationForm = ({ setRegistration }) => {
           onChange={(event) => {
             setEmail(event.target.value);
           }}
-          isEmpty={isEmptyEmail}
+          isWrong={isWrongEmail}
         />
-        <InputTitle isEmpty={isEmptyEmail}>Email</InputTitle>
+        <InputTitle isWrong={isWrongEmail}>Email</InputTitle>
       </InputHolder>
       <InputHolder>
         <Input
@@ -74,9 +81,9 @@ const RegistrationForm = ({ setRegistration }) => {
           required
           value={username}
           onChange={(event) => setUsername(event.target.value)}
-          isEmpty={isEmptyUsername}
+          isWrong={isWrongUsername}
         />
-        <InputTitle isEmpty={isEmptyUsername}>username</InputTitle>
+        <InputTitle isWrong={isWrongUsername}>username</InputTitle>
       </InputHolder>
       <InputHolder>
         <Input
@@ -84,15 +91,15 @@ const RegistrationForm = ({ setRegistration }) => {
           required
           value={password}
           onChange={(event) => SetPassword(event.target.value)}
-          isEmpty={isEmptyPassword}
+          isWrong={isWrongPassword}
         />
-        <InputTitle isEmpty={isEmptyPassword}>Password</InputTitle>
+        <InputTitle isWrong={isWrongPassword}>Password</InputTitle>
       </InputHolder>
       <ContinueButton onClick={register}>Continue</ContinueButton>
       <ResetButton onClick={() => setRegistration(false)}>
         Do you have an account already?
+        <ErrorText>{error}</ErrorText>
       </ResetButton>
-      <ErrorText>{error}</ErrorText>
     </Holder>
   );
 };
@@ -108,12 +115,12 @@ const Input = styled.input`
   ${(props) => props.theme.AuthInput}
 
   border: 1px solid ${(props) =>
-    props.isEmpty ? props.theme.errorColor : "#000000"}; ;
+    props.isWrong ? props.theme.errorColor : "#000000"};
 `;
 
 const InputTitle = styled.text`
   color: ${(props) =>
-    props.isEmpty ? props.theme.errorColor : props.theme.subFontColor};
+    props.isWrong ? props.theme.errorColor : props.theme.subFontColor};
   font-size: 12px;
   position: absolute;
   top: -20px;
@@ -130,13 +137,15 @@ const ResetButton = styled.div`
   ${(props) => props.theme.hlText}
 
   margin-top: 10px;
+  position: relative;
 `;
 
 const ErrorText = styled.div`
+  position: absolute;
   font-size: 15px;
   color: ${(props) => props.theme.errorColor};
   width: 415px;
-  height: 30px;
+  height: 50px;
   overflow: hidden;
   word-break: break-all;
 `;

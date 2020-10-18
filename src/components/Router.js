@@ -6,17 +6,26 @@ import {
   Switch,
 } from "react-router-dom";
 import Auth from "../routes/Auth";
+import Home from "../routes/Home";
 
-// isLoggedIn
-const AppRouter = () => (
+const AppRouter = ({ isLoggedIn, userObj, refreshUser }) => (
   <Router>
     <Switch>
-      <>
-        <Route exact path="/">
-          <Auth />
-        </Route>
-        <Redirect from="*" to="/" />
-      </>
+      {isLoggedIn ? (
+        <>
+          <Route exact path="/">
+            <Home userObj={userObj} />
+          </Route>
+          <Redirect from="*" to="/" />
+        </>
+      ) : (
+        <>
+          <Route exact path="/">
+            <Auth />
+          </Route>
+          <Redirect from="*" to="/" />
+        </>
+      )}
     </Switch>
   </Router>
 );

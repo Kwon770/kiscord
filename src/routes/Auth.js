@@ -7,7 +7,7 @@ import Wave from "react-wavify";
 import RegistrationForm from "components/RegistrationForm";
 
 const Auth = () => {
-  const [registration, setRegistration] = useState(true);
+  const [registration, setRegistration] = useState(false);
 
   return (
     <Holder>
