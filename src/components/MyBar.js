@@ -2,13 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { FaCog } from "react-icons/fa";
 import theme from "Styles/theme";
-import PmListComponent from "components/PmListComponent";
 
 const MyBar = () => {
   return (
     <Holder>
       <ProfileHolder>
-        <Profile picture="https://media-exp1.licdn.com/dms/image/C560BAQFHd3L0xFcwcw/company-logo_200_200/0?e=2159024400&v=beta&t=n0t8JMKRzeZtfUr1dh_p_JqyJEuhnwPHD8LJ0p1L_Tg" />
+        <Picture picture="https://media-exp1.licdn.com/dms/image/C560BAQFHd3L0xFcwcw/company-logo_200_200/0?e=2159024400&v=beta&t=n0t8JMKRzeZtfUr1dh_p_JqyJEuhnwPHD8LJ0p1L_Tg" />
         <Name>kwonmain</Name>
       </ProfileHolder>
 
@@ -38,7 +37,7 @@ const ProfileHolder = styled.div`
   align-items: center;
 `;
 
-const Profile = styled.div`
+const Picture = styled.div`
   background-image: url(${(props) => props.picture});
   background-size: cover;
   background-position: center;
@@ -51,8 +50,7 @@ const Profile = styled.div`
 
 const Name = styled.div`
   font-size: 17px;
-  color: ${(props) =>
-    props.main ? props.theme.mainFontColor : props.theme.subFontColor};
+  color: ${(props) => props.theme.mainFontColor};
 `;
 
 export default MyBar;

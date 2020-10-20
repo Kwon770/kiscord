@@ -3,10 +3,8 @@ import styled from "styled-components";
 import { FaUserAlt } from "react-icons/fa";
 import theme from "Styles/theme";
 import ChanelBar from "components/ChanelBar";
-import FriendBar from "components/FriendBar";
-import PmListComponent from "components/PmListComponent";
-import { MdMessage } from "react-icons/md";
-import { BsThreeDotsVertical } from "react-icons/bs";
+import PmBar from "components/PmBar";
+import FriendList from "components/FriendList";
 
 const Home = ({ userObj }) => {
   useEffect(() => {
@@ -16,7 +14,7 @@ const Home = ({ userObj }) => {
   return (
     <Holder>
       <ChanelBar />
-      <FriendBar />
+      <PmBar />
       <Main>
         <MainBar>
           <BarTitle>
@@ -28,21 +26,7 @@ const Home = ({ userObj }) => {
         </MainBar>
         <Content>
           <Title>All Friend - 1</Title>
-          <FriendHolder>
-            <PmListComponent
-              main="main"
-              name="kwon"
-              picture="https://media-exp1.licdn.com/dms/image/C560BAQFHd3L0xFcwcw/company-logo_200_200/0?e=2159024400&v=beta&t=n0t8JMKRzeZtfUr1dh_p_JqyJEuhnwPHD8LJ0p1L_Tg"
-            />
-            <FriendMenuHolder>
-              <FriendMenu>
-                <MdMessage color={theme.subFontColor} size={18} />
-              </FriendMenu>
-              <FriendMenu>
-                <BsThreeDotsVertical color={theme.subFontColor} size={18} />
-              </FriendMenu>
-            </FriendMenuHolder>
-          </FriendHolder>
+          <FriendList />
         </Content>
       </Main>
     </Holder>
@@ -101,30 +85,6 @@ const Title = styled.div`
   color: ${(props) => props.theme.subFontColor};
   padding-bottom: 8px;
   border-bottom: 1px solid ${(props) => props.theme.borderColor};
-`;
-
-const FriendHolder = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-`;
-
-const FriendMenuHolder = styled.div`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 100px;
-`;
-
-const FriendMenu = styled.div`
-  height: 35px;
-  width: 35px;
-  border-radius: 18pc;
-  background-color: ${(props) => props.theme.deepdarkBgColor};
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 `;
 
 export default Home;

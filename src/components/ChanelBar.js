@@ -5,11 +5,11 @@ const ChanelBar = () => {
   return (
     <SideBar>
       <Chanel picture="https://media-exp1.licdn.com/dms/image/C560BAQFHd3L0xFcwcw/company-logo_200_200/0?e=2159024400&v=beta&t=n0t8JMKRzeZtfUr1dh_p_JqyJEuhnwPHD8LJ0p1L_Tg">
-        <OverlayTitle id="name">Home</OverlayTitle>
+        <OverlayTitle className="overlayName">Home</OverlayTitle>
       </Chanel>
       <Border />
       <Chanel picture="https://media-exp1.licdn.com/dms/image/C560BAQFHd3L0xFcwcw/company-logo_200_200/0?e=2159024400&v=beta&t=n0t8JMKRzeZtfUr1dh_p_JqyJEuhnwPHD8LJ0p1L_Tg">
-        <OverlayTitle id="name">Home</OverlayTitle>
+        <OverlayTitle className="overlayName">Home</OverlayTitle>
       </Chanel>
     </SideBar>
   );
@@ -18,7 +18,7 @@ const ChanelBar = () => {
 const SideBar = styled.div`
   width: 110px;
   height: 100vh;
-  background-color: ${(props) => props.theme.deepdarkBgColor};
+  background-color: ${(props) => props.theme.deepDarkBgColor};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,7 +39,7 @@ const Chanel = styled.div`
     border-radius: 18px;
   }
 
-  &:hover #name {
+  &:hover .overlayName {
     opacity: 1;
   }
 `;

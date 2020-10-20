@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 import { FaUserAlt, FaPlus } from "react-icons/fa";
 import theme from "Styles/theme";
-import PmListComponent from "components/PmListComponent";
+import UserComponent from "components/UserComponent";
 import MyBar from "components/MyBar";
 
-const FriendBar = () => {
+const PmBar = () => {
   return (
     <Bar>
       <Menu>
@@ -23,11 +23,11 @@ const FriendBar = () => {
         <FaPlus color={theme.subFontColor} />
       </PmTitleHolder>
       {/* Dynamic Personal Message */}
-      <PmListComponent
+      <UserComponent
         name="kwon"
         picture="https://media-exp1.licdn.com/dms/image/C560BAQFHd3L0xFcwcw/company-logo_200_200/0?e=2159024400&v=beta&t=n0t8JMKRzeZtfUr1dh_p_JqyJEuhnwPHD8LJ0p1L_Tg"
       />
-      <PmListComponent
+      <UserComponent
         name="kwon"
         picture="https://media-exp1.licdn.com/dms/image/C560BAQFHd3L0xFcwcw/company-logo_200_200/0?e=2159024400&v=beta&t=n0t8JMKRzeZtfUr1dh_p_JqyJEuhnwPHD8LJ0p1L_Tg"
       />
@@ -78,4 +78,4 @@ const BarTitleText = styled.div`
   ${(props) => props.theme.BarTitleText};
 `;
 
-export default FriendBar;
+export default PmBar;

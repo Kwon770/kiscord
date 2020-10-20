@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const PmListComponent = ({ picture, name, main }) => {
+const UserComponent = ({ picture, name, main }) => {
   return (
     <Holder>
-      <Profile picture={picture} />
-      <Name main={main}>{name}</Name>
+      <Picture picture={picture} />
+      <Name>{name}</Name>
     </Holder>
   );
 };
@@ -24,7 +24,7 @@ const Holder = styled.div`
   }
 `;
 
-const Profile = styled.div`
+const Picture = styled.div`
   background-image: url(${(props) => props.picture});
   background-size: cover;
   background-position: center;
@@ -37,8 +37,7 @@ const Profile = styled.div`
 
 const Name = styled.div`
   font-size: 17px;
-  color: ${(props) =>
-    props.main ? props.theme.mainFontColor : props.theme.subFontColor};
+  color: ${(props) => props.theme.subFontColor};
 `;
 
-export default PmListComponent;
+export default UserComponent;

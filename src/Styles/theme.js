@@ -3,7 +3,7 @@ const palette = {
   lightBgColor: "#37393E",
   deepBgColor: "#313338",
   darkBgColor: "#292B2F",
-  deepdarkBgColor: "#202225",
+  deepDarkBgColor: "#202225",
   animColor: "#3F4247",
   hlColor: "#7689D4",
   hl2Color: "#6B7CBF",
