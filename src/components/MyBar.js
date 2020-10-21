@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { FaCog } from "react-icons/fa";
-import theme from "Styles/theme";
 
 const MyBar = () => {
   return (
@@ -11,11 +10,10 @@ const MyBar = () => {
         <Name>kwonmain</Name>
       </ProfileHolder>
 
-      <FaCog
-        color={theme.subFontColor}
-        size={18}
-        style={{ marginRight: 25, cursor: "pointer" }}
-      />
+      <OuterMenu>
+        <FaCog />
+        <OverlayTitle className="overlay">Setting</OverlayTitle>
+      </OuterMenu>
     </Holder>
   );
 };
@@ -51,6 +49,14 @@ const Picture = styled.div`
 const Name = styled.div`
   font-size: 17px;
   color: ${(props) => props.theme.mainFontColor};
+`;
+
+const OuterMenu = styled.div`
+  ${(props) => props.theme.OuterMenu}
+`;
+
+const OverlayTitle = styled.div`
+  ${(props) => props.theme.OuterMenuOverlay}
 `;
 
 export default MyBar;

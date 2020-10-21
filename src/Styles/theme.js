@@ -73,12 +73,25 @@ const ui = {
   border-right: 1px solid ${palette.borderColor};
 `,
 
-  OverlayTitle: `
+  OuterMenu: `
+  position: relative;
+  color: ${palette.subFontColor};
+  font-size: 18px;
+  margin-right: 25px;
+  cursor: pointer;
+
+  &:hover .overlay {
+    opacity: 1;
+  }
+`,
+
+  OuterMenuOverlay: `
   z-index: 10;
   opacity: 0;
   position: absolute;
-  top: 7px;
-  left: 55px;
+  top: -200%;
+  left: 50%;
+  transform: translateX(-50%);
   background-color: black;
   padding: 10px;
   border-radius: 10px;
