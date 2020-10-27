@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { FaUserAlt } from "react-icons/fa";
 import theme from "Styles/theme";
@@ -8,9 +8,15 @@ import AllFriendForm from "components/AllFriendForm";
 import AddFriendForm from "components/AddFriendForm";
 
 const Home = ({ userObj }) => {
+  const [menu, setMenu] = useState(0);
+
   useEffect(() => {
     // console.log(userObj);
   }, []);
+
+  const isClicked = (index) => {
+    return index === menu ? true : false;
+  };
 
   return (
     <Holder>
@@ -22,13 +28,14 @@ const Home = ({ userObj }) => {
             <FaUserAlt color={theme.subFontColor} size={17} />
             <BarTitleText>Friend</BarTitleText>
           </BarTitle>
-          <Menu>All</Menu>
-          <Menu AddFriend>Add Friend</Menu>
+          <Menu onClick={() => setMenu(0)} clicked={isClicked(0)}>
+            All
+          </Menu>
+          <Menu AddFriend onClick={() => setMenu(1)} clicked={isClicked(1)}>
+            Add Friend
+          </Menu>
         </MainBar>
-        <Form>
-          {/* <AddFriendForm /> */}
-          <AllFriendForm />
-        </Form>
+        <Form>{menu === 0 ? <AllFriendForm /> : <AddFriendForm />}</Form>
       </Main>
     </Holder>
   );
@@ -61,13 +68,18 @@ const BarTitleText = styled.div`
 `;
 
 const Menu = styled.div`
-  padding: 3px 7px;
+  padding: 4px 9px;
   border-radius: 5px;
   font-size: 15px;
   margin: 0px 15px;
-  background-color: ${(props) => (props.AddFriend ? "#64B385" : "")};
+  background-color: ${(props) =>
+    props.AddFriend ? "#64B385" : props.clicked ? props.theme.animColor : ""};
   color: ${(props) =>
-    props.AddFriend ? props.theme.mainFontColor : props.theme.subFontColor};
+    props.AddFriend
+      ? props.theme.mainFontColor
+      : props.clicked
+      ? props.theme.mainFontColor
+      : props.theme.subFontColor};
   cursor: pointer;
 
   &:hover {
