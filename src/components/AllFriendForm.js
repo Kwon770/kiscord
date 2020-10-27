@@ -4,9 +4,10 @@ import { MdMessage } from "react-icons/md";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import theme from "Styles/theme";
 
-const FriendList = () => {
+const AllFriendForm = () => {
   return (
-    <List>
+    <Holder>
+      <Title>All Friend - 1</Title>
       <Friend>
         <InforHolder>
           <Picture picture="https://media-exp1.licdn.com/dms/image/C560BAQFHd3L0xFcwcw/company-logo_200_200/0?e=2159024400&v=beta&t=n0t8JMKRzeZtfUr1dh_p_JqyJEuhnwPHD8LJ0p1L_Tg" />
@@ -35,22 +36,32 @@ const FriendList = () => {
           </Menu>
         </MenuHolder>
       </Friend>
-    </List>
+    </Holder>
   );
 };
 
-const List = styled.div`
-  width: 100%;
+const Holder = styled.div`
+  margin: 13px 30px;
+`;
+
+const Title = styled.div`
+  margin-left: 10px;
+  font-size: 15px;
+  color: ${(props) => props.theme.subFontColor};
+  padding-bottom: 8px;
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
 `;
 
 const Friend = styled.div`
   width: 100%;
   height: 50px;
   border-radius: 10px;
+  padding: 5px 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   cursor: pointer;
+  border-bottom: 1px solid ${(props) => props.theme.borderColor};
 
   &:hover {
     background-color: ${(props) => props.theme.animColor};
@@ -100,4 +111,4 @@ const Name = styled.div`
   color: ${(props) => props.theme.subFontColor};
 `;
 
-export default FriendList;
+export default AllFriendForm;

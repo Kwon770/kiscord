@@ -5,7 +5,7 @@ import theme from "Styles/theme";
 import UserComponent from "components/UserComponent";
 import MyBar from "components/MyBar";
 
-const PmBar = () => {
+const FriendBar = () => {
   return (
     <Bar>
       <Menu>
@@ -78,4 +78,4 @@ const BarTitleText = styled.div`
   ${(props) => props.theme.BarTitleText};
 `;
 
-export default PmBar;
+export default FriendBar;

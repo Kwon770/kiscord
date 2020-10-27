@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { FaUserAlt } from "react-icons/fa";
 import theme from "Styles/theme";
 import ChanelBar from "components/ChanelBar";
-import PmBar from "components/PmBar";
-import FriendList from "components/FriendList";
+import FriendBar from "components/FriendBar";
+import AllFriendForm from "components/AllFriendForm";
+import AddFriendForm from "components/AddFriendForm";
 
 const Home = ({ userObj }) => {
   useEffect(() => {
@@ -14,7 +15,7 @@ const Home = ({ userObj }) => {
   return (
     <Holder>
       <ChanelBar />
-      <PmBar />
+      <FriendBar />
       <Main>
         <MainBar>
           <BarTitle>
@@ -24,10 +25,10 @@ const Home = ({ userObj }) => {
           <Menu>All</Menu>
           <Menu AddFriend>Add Friend</Menu>
         </MainBar>
-        <Content>
-          <Title>All Friend - 1</Title>
-          <FriendList />
-        </Content>
+        <Form>
+          {/* <AddFriendForm /> */}
+          <AllFriendForm />
+        </Form>
       </Main>
     </Holder>
   );
@@ -75,16 +76,6 @@ const Menu = styled.div`
   }
 `;
 
-const Content = styled.div`
-  padding: 20px;
-`;
-
-const Title = styled.div`
-  margin-left: 10px;
-  font-size: 15px;
-  color: ${(props) => props.theme.subFontColor};
-  padding-bottom: 8px;
-  border-bottom: 1px solid ${(props) => props.theme.borderColor};
-`;
+const Form = styled.div``;
 
 export default Home;

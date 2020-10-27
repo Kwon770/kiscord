@@ -9,6 +9,7 @@ const palette = {
   hl2Color: "#6B7CBF",
   mainFontColor: "#FFFFFF",
   subFontColor: "#86888C",
+  hiddenFontColor: "#50545B",
   errorColor: "#FF4042",
   borderColor: "#434549",
 };
@@ -19,7 +20,7 @@ const ui = {
   position: relative;
   border-radius: 5px;
   background-color: ${palette.deepBgColor};
-  border: 1px solid black;
+  border: 1px solid #232428;
   font-size: 14px;
   font-weight: 300;
   color: white;
