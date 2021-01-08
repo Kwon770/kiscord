@@ -1,7 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { dbService, authService } from "fbase";
 
 const AddFriendForm = () => {
+  const sendFriendRequest = async () => {
+    const newFriendRequest = {
+      fromUser: authService.currentUser.uid,
+      // toUser:
+    };
+
+    await dbService.collection("friendRequests").add;
+  };
+
   return (
     <Holder>
       <InputForm>
